@@ -1,17 +1,21 @@
 require 'mydb'
+require 'readline'
 
-Signal.trap(:SIGINT) { Mydb::Store.get.persist }
+Signal.trap(:SIGINT) do
+  Mydb::Store.get.persist
+  exit
+end
 
-loop do
-  input = gets
-
+while buf = Readline.readline("> ", true) do
   begin
-    command = Mydb::Parser.new.parse(input)
+    command = Mydb::Parser.new.parse(buf)
+    unless command
+      raise "Syntax error"
+    end
     command.run
     Mydb::Store.get.persist
-#  rescue => e
-#    puts e.inspect
-#    puts e.cause
+  rescue => e
+    STDERR.puts e.full_message
   end
 end
 
