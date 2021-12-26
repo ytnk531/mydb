@@ -1,14 +1,20 @@
 require 'mydb'
 require 'readline'
+require 'sql-parser'
 
 Signal.trap(:SIGINT) do
   Mydb::Store.get.persist
   exit
 end
 
+parser = SQLParser::Parser.new
+command_factory = CommandFactory.new
+
 while buf = Readline.readline("> ", true) do
   begin
-    command = Mydb::Parser.new.parse(buf)
+    ast = parser.scan_str(buf)
+    command = command_factory.build(ast)
+
     unless command
       raise "Syntax error"
     end

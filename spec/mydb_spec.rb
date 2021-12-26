@@ -1,11 +1,14 @@
 # frozen_string_literal: true
+require_relative 'spec_helper'
+require 'sql-parser'
 
 RSpec.describe Mydb do
-  it "has a version number" do
-    expect(Mydb::VERSION).not_to be nil
-  end
+  let(:factory) { Mydb::CommandFactory.new }
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "builds insert command" do
+    SQLParser::Parser.parse('INSERT INTO `users` VALUES (1, 2);')
+    command = factory.build(ast)
+
+    expect(command).to be_truethy
   end
 end

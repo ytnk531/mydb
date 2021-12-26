@@ -11,6 +11,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.3.2)
       ast (~> 2.4.1)
+    racc (1.6.0)
     rainbow (3.0.0)
     rake (13.0.6)
     regexp_parser (2.2.0)
@@ -40,6 +41,8 @@ GEM
     rubocop-ast (1.15.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    sql-parser (0.0.2)
+      racc
     unicode-display_width (2.1.0)
 
 PLATFORMS
@@ -50,6 +53,7 @@ DEPENDENCIES
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.7)
+  sql-parser (~> 0.0.2)
 
 BUNDLED WITH
    2.2.22
