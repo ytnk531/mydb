@@ -1,3 +1,1 @@
 CREATE TABLE customer (id INTEGER, name VARCHAR(20));
-INSERT customer (id, name) VALUE (10, 'aaa');
-SELECT * FROM customer;

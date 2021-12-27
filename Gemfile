@@ -11,4 +11,3 @@ gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.7"
 
-gem 'sql-parser', '~> 0.0.2'

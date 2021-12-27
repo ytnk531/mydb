@@ -11,8 +11,7 @@ module Mydb
     end
   
     def run
-      definitions = @create_definitions.split(", ")
-      columns = definitions.map { _1.split(" ")[0] }
+      columns = @create_definitions
       table = Table.new(@tbl_name, columns)
       store = Store.get
       store.add(table)
