@@ -6,7 +6,7 @@ RSpec.describe Mydb do
   let(:factory) { Mydb::CommandFactory.new }
 
   it "builds insert command" do
-    SQLParser::Parser.parse('INSERT INTO `users` VALUES (1, 2);')
+    ast = Parser.parse("insert into table VALUE ('v1', 'v2')")
     command = factory.build(ast)
 
     expect(command).to be_truethy

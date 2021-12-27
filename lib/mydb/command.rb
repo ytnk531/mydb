@@ -11,8 +11,7 @@ module Mydb
     end
   
     def run
-      definitions = @create_definitions.split(", ")
-      columns = definitions.map { _1.split(" ")[0] }
+      columns = @create_definitions
       table = Table.new(@tbl_name, columns)
       store = Store.get
       store.add(table)
@@ -25,15 +24,17 @@ module Mydb
   class InsertCommand
     def initialize(tbl_name, col_names, value_list)
       @tbl_name = tbl_name
-      @col_names = col_names.split(", ")
-      @value_list = value_list.split(", ")
+      @col_names = col_names
+      @value_list = value_list
     end
   
     def run
       store = Store.get
       table = store.table(@tbl_name)
-      row = @col_names.zip(@value_list).to_h
-      table.insert(row)
+      @value_list.each do |values|
+        row = @col_names.zip(values).to_h
+        table.insert(row)
+      end
     end
   end
   
@@ -55,6 +56,8 @@ module Mydb
       table = store.table(@tbl_name)
       col_names = if @select_expr == '*'
                     table.column_names
+                  else
+                    @select_expr
                   end
       table.rows_as_object.each do
         puts _1.show(col_names)

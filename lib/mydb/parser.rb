@@ -1,7 +1,7 @@
 require_relative 'command'
 
 module Mydb
-  class Parser
+  class Parser2
     def parse(sentence)
       tokens = sentence.split(' ')
       if tokens[0] == 'CREATE'
