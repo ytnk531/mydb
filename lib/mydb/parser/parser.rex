@@ -11,6 +11,8 @@ rule
   FROM { [:FROM, text] }
   VALUES { [:VALUES, text] }
   VALUE { [:VALUE, text] }
+  WHERE { [:WHERE, text] }
+  = { [:EQUAL, text] }
   \( { [:LEFT_PAREN, text] }
   \) { [:RIGHT_PAREN, text] }
   \* { [:STAR, text] }

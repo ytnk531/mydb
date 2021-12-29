@@ -21,8 +21,10 @@ rule
     col_name
   | col_name LEFT_PAREN IDENT RIGHT_PAREN
 
-  select :
-    SELECT select_target FROM tbl_name { result = Mydb::SelectCommand.new(val[3], val[1]) }
+  select : SELECT select_target FROM tbl_name { result = Mydb::SelectCommand.new(val[3], val[1]) }
+         | SELECT select_target FROM tbl_name where_statement { result = Mydb::SelectCommand.new(val[3], val[1], val[4]) }
+
+  where_statement : WHERE col_name EQUAL column_value { result = Mydb::WhereStatement.new(val[1], val[3]) }
 
   select_target: STAR
                | comma_separated_col_names

@@ -39,9 +39,10 @@ module Mydb
   end
   
   class SelectCommand
-    def initialize(tbl_name, select_expr)
+    def initialize(tbl_name, select_expr, where=NullWhereStatement.new)
       @tbl_name = tbl_name
       @select_expr = select_expr
+      @where = where
     end
   # mysql> SELECT * FROM customer
   #     -> ;
@@ -59,9 +60,27 @@ module Mydb
                   else
                     @select_expr
                   end
-      table.rows_as_object.each do
-        puts _1.show(col_names)
-      end
+      table
+        .rows_as_object
+        .select { @where.matches?(_1) }
+        .each { puts _1.show(col_names) }
+    end
+  end
+
+  class WhereStatement
+    def initialize(col_name, val)
+      @col_name = col_name
+      @val = val
+    end
+
+    def matches?(row)
+      row.show([@col_name]) == @val
+    end
+  end
+
+  class NullWhereStatement
+    def matches?(_row)
+      true
     end
   end
 end
