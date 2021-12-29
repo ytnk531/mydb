@@ -1,29 +1,13 @@
 # Mydb
 Mydb is a database written in Ruby. This was built for learning.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
+## Installation and usage
 
 ```ruby
 git clone https://github.com/ytnk531/mydb.git
 cd mydb
 bundle exec ruby exe/mydb.rb
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install mydb
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Why Mydb?
 
