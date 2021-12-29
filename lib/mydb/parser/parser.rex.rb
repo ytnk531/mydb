@@ -78,11 +78,11 @@ class Mydb::Parser::Parser < Racc::Parser
                   when (text = @ss.scan(/FROM/i))
                      action { [:FROM, text] }
 
-                  when (text = @ss.scan(/VALUE/i))
-                     action { [:VALUE, text] }
-
                   when (text = @ss.scan(/VALUES/i))
                      action { [:VALUES, text] }
+
+                  when (text = @ss.scan(/VALUE/i))
+                     action { [:VALUE, text] }
 
                   when (text = @ss.scan(/\(/i))
                      action { [:LEFT_PAREN, text] }

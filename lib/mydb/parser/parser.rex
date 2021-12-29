@@ -9,8 +9,8 @@ rule
   INSERT { [:INSERT, text] }
   SELECT { [:SELECT, text] }
   FROM { [:FROM, text] }
-  VALUE { [:VALUE, text] }
   VALUES { [:VALUES, text] }
+  VALUE { [:VALUE, text] }
   \( { [:LEFT_PAREN, text] }
   \) { [:RIGHT_PAREN, text] }
   \* { [:STAR, text] }
