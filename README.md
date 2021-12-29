@@ -1,6 +1,5 @@
 # Mydb
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mydb`. To experiment with that code, run `bin/console` for an interactive prompt.
+Mydb is a database written in Ruby. This was built for learning.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -9,7 +8,9 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mydb'
+git clone https://github.com/ytnk531/mydb.git
+cd mydb
+bundle exec ruby exe/mydb.rb
 ```
 
 And then execute:
@@ -23,6 +24,11 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
+
+## Why Mydb?
+
+I use RDMS in my work, 
+but I don't have knowledge about its implementation. I wanted to try my hand at building one, but in pure Ruby.
 
 ## Development
 
