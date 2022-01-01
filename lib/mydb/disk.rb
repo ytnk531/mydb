@@ -2,7 +2,7 @@ class DiskManager
   PAGE_SIZE = 4096
 
   def initialize(filename)
-    @heap_file = File.open("data", "rb+")
+    @heap_file = File.open(filename, "rb+")
   end
 
   def write_page_data(page_id, data)
@@ -12,8 +12,10 @@ class DiskManager
 
   def read_page_data(page_id)
     seek_for(page_id)
-    @heap_file.write(data)
+    @heap_file.read(PAGE_SIZE)
   end
+
+  attr_reader :heap_file
 
   private
 
