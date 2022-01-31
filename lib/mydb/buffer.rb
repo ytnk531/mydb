@@ -28,12 +28,15 @@ class BufferPool < Struct.new(:buffers, :next_victim_id)
     buffers.size
   end
 
-  def recycle_buffer(buffer_id, disk, page_table)
+  def recycle_buffer(buffer_id, disk, page_table, new_page_id)
     frame = buffers[buffer_id]
     buffer = frame.buffer
     sync(buffer, disk)
     frame.usage_count = 1
     page_table.delete(buffer.page_id)
+
+    buffer.page_id = new_page_id
+    buffer.page = disk.read_page_data(new_page_id)
     buffer
   end
 
@@ -64,7 +67,7 @@ class BufferPoolManager < Struct.new(:disk, :pool, :page_table)
       pool.rend(cached_buffer_id)
     else
       if evict_buffer_id = pool.evict
-        buffer = pool.recycle_buffer(evict_buffer_id, disk, page_table)
+        buffer = pool.recycle_buffer(evict_buffer_id, disk, page_table, page_id)
         add_buffer(page_id, evict_buffer_id)
       else
         buffer = pool.add_buffer(page_id, disk)

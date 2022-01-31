@@ -31,7 +31,7 @@ RSpec.describe BufferPoolManager do
       pool = BufferPool.new(frames, 0)
       manager = BufferPoolManager.new(disk_manager, pool, 10 => 0)
 
-      expect(manager.fetch_page(11)).to Buffer.new(11, nil, false)
+      expect(manager.fetch_page(11)).to eq Buffer.new(11, nil, false)
     end
   end
 end
