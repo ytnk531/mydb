@@ -15,7 +15,6 @@ module Mydb
       table = Table.new(@tbl_name, columns)
       store = Store.get
       store.add(table)
-      store.show_all
     end
   end
   
