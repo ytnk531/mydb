@@ -1,5 +1,5 @@
 # Mydb
-Mydb is a database written in Ruby. This was built for learning.
+Mydb is an in-memory database which supports SQL written in Ruby. This was built for learning.
 
 ## Installation and usage
 
@@ -8,6 +8,18 @@ git clone https://github.com/ytnk531/mydb.git
 cd mydb
 bundle exec ruby exe/mydb.rb
 ```
+
+## Queries
+Only supports `CREATE TABLE`, `INSERT`, `SELECT`.
+
+```sql
+CREATE TABLE customer (id INTEGER, name VARCHAR(20));
+INSERT customer (id, name) VALUE (10, 'arise'), (12, 'bob');
+SELECT id, name FROM customer WHERE id=10;
+SELECT id, name FROM customer WHERE name='bob';
+```
+![image](https://user-images.githubusercontent.com/9428628/162443608-453cd701-0bab-462b-8f08-9ef4dd157917.png)
+
 
 ## Why Mydb?
 
